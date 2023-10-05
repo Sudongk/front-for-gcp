@@ -11,12 +11,12 @@ function App() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
-    await apiNoToken('/api/v1/user', 'POST', member)
-    setData([...data, { ...member, id: data[data.length].id + 1 }])
+    await apiNoToken('/api', 'POST', member)
+    setData([...data, { ...member }])
   }
 
   const getData = async () => {
-    const { data } = await apiNoToken('/api/v1/user', 'GET')
+    const { data } = await apiNoToken('/api', 'GET')
     setData(data)
   }
 
@@ -56,9 +56,9 @@ function App() {
 
         <section>
 
-          {data.map((member) =>
+          {data.map((member, idx) =>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }} id={member.id}>
-              <div>{member.id}</div>
+              <div>{idx}</div>
               <div>{member.name}</div>
               <div>{member.description}</div>
             </div>
