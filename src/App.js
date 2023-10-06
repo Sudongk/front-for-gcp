@@ -11,12 +11,12 @@ function App() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
-    await apiNoToken('/api', 'POST', member)
+    await apiNoToken('/api/v1/user', 'POST', member)
     setData([...data, { ...member }])
   }
 
   const getData = async () => {
-    const { data } = await apiNoToken('/api', 'GET')
+    const { data } = await apiNoToken('/api/v1/user', 'GET')
     setData(data)
   }
 
